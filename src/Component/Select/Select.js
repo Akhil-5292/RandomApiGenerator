@@ -1,50 +1,79 @@
-import { useState } from "react";
+import React, { useState } from 'react'
 import {faker} from '@faker-js/faker'
-
+import { TextField } from '@mui/material'
+import style from './Select.module.css'
+import Btn from '../Atom/Btn'
 export default function Select(){
-    const [categories]=useState(Object.keys(faker))
-    const [subCategories,setSubCategories]=useState([])
-    const[selectedCategory,setSelectedCategory]=useState('')
-    const [selectedSubCategory,setSelectedSubCategory]=useState('')
-    const [count,setCount]=useState(0)
-    const onCategoryChange=({target: {name,value}})=>{
-        console.log(value)
-        setSelectedCategory(value)
-        setSubCategories(Object.keys(faker[value]))
-      }
+  const [categories]=useState(Object.keys(faker))
+  const [subCategories,setSubCategories]=useState([])
+  const [selectedCategory,setSelectedCategory]=useState('')
+  const [selectedSubCategory,setSelectedSubCategory]=useState('')
+  const [count,setCount]=useState(0)
+  const [key,setKey]=useState('') 
+  const [data,setData]=useState([])
   
-      const onSubCategryChange=(value)=>{
-          setSelectedSubCategory(value)
-      }
+  
+  const onCategoryChange=({target:{name, value}})=>{
+      console.log(value)
+      setSelectedCategory(value)
+      setSubCategories(Object.keys(faker[value]))
+  }
 
-      const onGenerate=()=>{
-        console.log(faker[selectedCategory][selectedSubCategory]())
-      }
+  const onSubCategoryChange=({target:{name, value}})=>{
+    console.log(value)
+   setSelectedSubCategory(value)
+  }
 
-      const onCountChange=({target: {name,value}})=>{
-        setCount(value)
+  const onGenerate=()=>{
+    const API=[]
+    for (let index = 0; index < count; index++) {
+      const obj={
+        [key] : faker[selectedCategory][selectedSubCategory]() 
       }
-    return(
-        <>
-        {selectedCategory}
-            <input type='text' placeholder="key" name="" />  
-            <select name="category" onChange={onCategoryChange}>
-                {categories.map((x)=>(
-                    <option value={x}>
-                        {x}
-                    </option>
-                ))}
-            </select>
-            <select name="subCategory" onChange={onSubCategryChange}>
-                {subCategories.map((x)=>(
-                    <option value={x}>
-                        {x}
-                    </option>
-                ))}
-            </select>
-            <input type='number'placeholder="count" value={count} onChange={onCountChange} />
+      API.push(obj)
+    }
+  console.log(API)
+  setData(API)
+  }
 
-            <button onClick={onGenerate}>generate</button>
-        </>
-    )
+  const onCountChange=({target: {name, value}})=>{
+    setCount(value)
+  }
+
+  const onKeyChange=(e)=>{
+    setKey(e.target.value)
+  }
+  return(
+    <div >
+    <TextField onChange={onKeyChange} type='text' placeholder='key' name='' />
+    <select className={style.select}  name='categories' onChange={onCategoryChange} >
+     {
+       categories.map((x)=>(
+         <option value={x}>{x}</option>
+       ))
+     }
+    </select>
+    <select className={style.select} name='subCategories' onChange={onSubCategoryChange} >
+      {subCategories.map((x)=>
+      (
+        <option value={x}>{x}</option>
+      ))
+      }
+      </select>
+      <TextField className={style.count} onChange={onCountChange} value={count} type='number' placeholder='count' name='count'/>
+      
+      <div>
+      <Btn onClick={onGenerate}
+      text='Generate'
+      style={style.btn}/>
+      </div>
+      <div className={style.data}>     
+        <pre>
+          {
+            JSON.stringify(data, null, 3)
+          }
+        </pre>
+      </div>
+    </div>
+  )
 }

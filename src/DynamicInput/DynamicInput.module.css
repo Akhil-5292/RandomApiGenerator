@@ -4,6 +4,20 @@
     box-sizing: border-box;
 }
 
+
 .input{
     display: flex;
+}
+
+.btn{
+    background-color:darkcyan;
+    color: #fff;
+    height: 35px;
+    width: 75px;
+    margin-top:15px ;
+}
+
+.select{
+    height:55px;
+    background-color:slategrey;
 }

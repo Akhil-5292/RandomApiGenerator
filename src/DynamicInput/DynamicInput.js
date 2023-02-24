@@ -30,11 +30,13 @@ export default function DynamicInput(){
     }
 
     const onCategoryChange=({target: {name,value}})=>{
+      console.log(value)
       setSelectedCategory(value)
       setSubCategories(Object.keys(faker[value]))
     }
 
     const onSubCategryChange=(value)=>{
+      console.log(value)
         setSelectedSubCategory(value)
     }
 
@@ -46,9 +48,8 @@ export default function DynamicInput(){
        };
         list.push(obj);
       }
+      console.log(list)
       setData(list)
-    //   console.log(list)
-    
     } 
 
     const onCountChange=({target: {name,value}})=>{
@@ -64,27 +65,27 @@ export default function DynamicInput(){
                 <div className={style.input} key={index}>
                     <div>
                         <TextField
-                        type='option'
+                        type='text'
                         placeholder="Key"
+                        name=""
                         value={key}
                         onChange={onKeyChange}
                         />
                     </div>
-                    <div>
-                       <select onChange={onCategoryChange} name="category">
+                    <div >
+                       <select className={style.select} onChange={onCategoryChange} name="category">
                         {
-                            categories.map((x)=>
+                            categories.map((x)=>(
                             <option value={x}>{x}</option>
-                            )
+                            ))
                         }
                        </select>
-                    </div>
-                    <div>
-                      <select name='subCategory' onChange={onSubCategryChange}>
+
+                      <select className={style.select} name='subCategory' onChange={onSubCategryChange}>
                       {
-                            subCategories.map((x)=>
+                            subCategories.map((x)=>(
                             <option value={x}>{x}</option>
-                            )
+                            ))
                         }
                       </select>
                       {/* <Select/> */}
@@ -98,14 +99,17 @@ export default function DynamicInput(){
                         />
                     </div>
                     <Btn text='X'
-                    onClick={deleteInput}/>
+                    onClick={deleteInput}
+                    />
                 </div>
                 ))}
                 <Btn text='Add More'
-                onClick={addField}/>
+                onClick={addField}
+                style={style.btn}/>
         </div>
         <Btn text='Generate'
-        onClick={onGenerate}/>
+        onClick={onGenerate}
+        style={style.btn}/>
 
         
           <pre> {

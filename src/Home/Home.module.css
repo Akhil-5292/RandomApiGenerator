@@ -1,5 +1,9 @@
 .heading{
 display: flex;
-gap: 8rem;
+gap: 9rem;
 }
 
+.wrapper{
+    background-color:slategrey;
+    height: 100vh;
+}
