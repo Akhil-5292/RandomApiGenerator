@@ -44,8 +44,8 @@ export default function Select(){
     setKey(e.target.value)
   }
   return(
-    <div >
-    <TextField onChange={onKeyChange} type='text' placeholder='key' name='' />
+    <div className={style.wrapper} >
+    <TextField className={style.key} onChange={onKeyChange} type='text' placeholder='key' name='' />
     <select className={style.select}  name='categories' onChange={onCategoryChange} >
      {
        categories.map((x)=>(
