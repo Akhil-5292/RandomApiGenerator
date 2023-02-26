@@ -15,9 +15,43 @@
     height: 35px;
     width: 75px;
     margin-top:15px ;
+    border-radius: 10px;
+    border:1px solid #333;
 }
 
 .select{
     height:55px;
     background-color:slategrey;
+    margin-left: 15px;
+    border:1px solid #333;
+}
+.wrapper{
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.count{
+    margin-left: 15px; 
+    border: 1px solid #333;  
+}
+
+.key{
+    border:1px solid #333;
+}
+
+.delete{
+    width: 25px;
+    background-color:darkcyan;
+    border:1px solid #333;
+    color: red;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.data{
+    border: 1px solid;
+    background-color: #efdbee;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    width: auto;
 }

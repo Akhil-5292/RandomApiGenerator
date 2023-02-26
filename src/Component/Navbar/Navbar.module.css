@@ -26,6 +26,11 @@
    width: 30vw;
    gap: 5px;
    list-style: none;
+   cursor: pointer;
+}
+
+.option h3{
+    cursor: pointer;
 }
 
 .right{
@@ -45,6 +50,7 @@
     align-items: center;
     list-style: none;
     gap: 15px;
+    cursor: pointer;
 }
 
 .btn{
@@ -57,5 +63,5 @@
     font-weight: 500;
     height:30px;
     border-radius: 10px;
-
+    cursor: pointer;
 }

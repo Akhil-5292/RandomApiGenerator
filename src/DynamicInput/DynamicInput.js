@@ -3,7 +3,7 @@ import { useState } from "react";
 import Btn from "../Component/Atom/Btn";
 import style from './DynamicInput.module.css'
 import {faker} from '@faker-js/faker'
-import Select from "../Component/Select/Select";
+
 
 export default function DynamicInput(){
     const inputField={fieldname:'',type:''}
@@ -35,13 +35,15 @@ export default function DynamicInput(){
       setSubCategories(Object.keys(faker[value]))
     }
 
-    const onSubCategryChange=(value)=>{
+    const onSubCategryChange=({target: {name,value}})=>{
       console.log(value)
         setSelectedSubCategory(value)
     }
 
     const onGenerate=()=>{
       const list=[] 
+      console.log(selectedCategory)
+      console.log(selectedSubCategory)
       for (let index = 0; index < count; index++) {
        const obj={
         [key] : faker[selectedCategory][selectedSubCategory](),
@@ -69,6 +71,7 @@ export default function DynamicInput(){
                         placeholder="Key"
                         name=""
                         value={key}
+                        className={style.key}
                         onChange={onKeyChange}
                         />
                     </div>
@@ -88,18 +91,20 @@ export default function DynamicInput(){
                             ))
                         }
                       </select>
-                      {/* <Select/> */}
+                      
                     </div>
                     <div>
                         <TextField
                         type='number'
                         placeholder="Count"
                         onChange={onCountChange}
+                        className={style.count}
                         value={count}
                         />
                     </div>
                     <Btn text='X'
                     onClick={deleteInput}
+                    style={style.delete}
                     />
                 </div>
                 ))}
@@ -111,11 +116,13 @@ export default function DynamicInput(){
         onClick={onGenerate}
         style={style.btn}/>
 
-        
-          <pre> {
-                JSON.stringify(data, null, 3)
-            }
-            </pre>
+        <div className={style.data}>     
+        <pre>
+          {
+            JSON.stringify(data, null, 3)
+          }
+        </pre>
+      </div>
         
      </div>
     )
