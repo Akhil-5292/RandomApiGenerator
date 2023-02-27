@@ -25,8 +25,10 @@ export default function DynamicInput(){
       setInput(filtered)
     }
 
-    const onKeyChange=(e)=>{
+    const onKeyChange=(e,index)=>{
+      // const updatedKey=input.map((input,i)=>index===1 ? Object.assign(input,{[e.target.fieldname] : e.target.value}) : input)
         setKey(e.target.value)
+        // setInput(updatedKey)
     }
 
     const onCategoryChange=({target: {name,value}})=>{
@@ -45,7 +47,7 @@ export default function DynamicInput(){
       console.log(selectedCategory)
       console.log(selectedSubCategory)
       for (let index = 0; index < count; index++) {
-       const obj={
+       var obj={
         [key] : faker[selectedCategory][selectedSubCategory](),
        };
         list.push(obj);
@@ -70,9 +72,9 @@ export default function DynamicInput(){
                         type='text'
                         placeholder="Key"
                         name=""
-                        value={key}
+                        // value={key}
                         className={style.key}
-                        onChange={onKeyChange}
+                        onChange={(e)=>onKeyChange(e,index)}
                         />
                     </div>
                     <div >
@@ -99,7 +101,7 @@ export default function DynamicInput(){
                         placeholder="Count"
                         onChange={onCountChange}
                         className={style.count}
-                        value={count}
+                        // value={count}
                         />
                     </div>
                     <Btn text='X'
