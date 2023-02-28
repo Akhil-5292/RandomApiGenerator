@@ -21,7 +21,7 @@
 
 .select{
     height:55px;
-    background-color:slategrey;
+    background-color: #fff;
     margin-left: 15px;
     border:1px solid #333;
 }
@@ -32,10 +32,12 @@
 .count{
     margin-left: 15px; 
     border: 1px solid #333;  
+    background-color: #fff;
 }
 
 .key{
     border:1px solid #333;
+    background-color: #fff;
 }
 
 .delete{
