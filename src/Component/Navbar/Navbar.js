@@ -39,7 +39,7 @@ export default function Navbar (){
                     <Dropdown/>
                 </li>
                 <li>
-                    SIGH IN
+                    SIGN IN
                 </li>
             </ul>
              
