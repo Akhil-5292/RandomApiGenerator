@@ -27,7 +27,7 @@
 }
 .wrapper{
     margin-top: 15px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 .count{
     margin-left: 15px; 
@@ -56,4 +56,8 @@
     font-size: 16px;
     font-weight: 500;
     width: auto;
+}
+
+.count_div{
+    margin-top: 15px;
 }

@@ -116,7 +116,8 @@ export default function DynamicInput() {
           onClick={addField}
           style={style.btn} />
       </div>
-      <div>
+      <div className={style.count_div}>
+        <h3>Count</h3>
         <TextField
           type='number'
           placeholder="Count"
