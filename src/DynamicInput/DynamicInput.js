@@ -51,9 +51,11 @@ export default function DynamicInput(){
         [key] : faker[selectedCategory][selectedSubCategory](),
        };
         list.push(obj);
+        setData([...data,list])
       }
-      console.log(list)
-      setData(list)
+      // console.log(list)
+      // setData(list)
+      
     } 
 
     const onCountChange=({target: {name,value}})=>{
